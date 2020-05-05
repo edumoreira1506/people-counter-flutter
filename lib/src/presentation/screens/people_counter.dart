@@ -6,21 +6,36 @@ import 'package:people_counter/src/presentation/widgets/title.dart';
 
 class PeopleCounter extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return MaterialApp(
       title: 'People Counter',
-      home: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      home: Stack(
         children: <Widget>[
-          AppTitle(),
-          Row(
+          Image.asset(
+            'assets/images/restaurant.jpg',
+            fit: BoxFit.cover,
+            height: 1000,
+          ),
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Button(text: '+1', onPress: () => {}),
-              Button(text: '-1', onPress: () => {}),
+              AppTitle(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Button(text: '+1', onPress: () => {}),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Button(text: '-1', onPress: () => {}),
+                  ),              
+                ]
+              ),
+              Subtitle(),
             ]
-          ),
-          Subtitle(),
+          )
         ]
       )
     );
