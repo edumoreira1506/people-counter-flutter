@@ -11,10 +11,15 @@ class PeopleCounter extends StatefulWidget {
 
 class _PeopleCounterState extends State<PeopleCounter> {
   int _people = 0;
+  bool _canEnter = true;
 
   void _changePeople(int delta) {
     setState(() {
-      _people += delta;
+      if (_canEnter || (delta < 0 && _people != 0)) {
+        _people += delta;
+      }
+
+      _canEnter = _people >= 10 ? false : true;
     });
   }
 
@@ -54,7 +59,7 @@ class _PeopleCounterState extends State<PeopleCounter> {
                 ),              
               ]
             ),
-            Subtitle(),
+            Subtitle(_canEnter),
           ]
         )
       ]
